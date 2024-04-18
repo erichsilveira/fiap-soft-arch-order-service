@@ -1,0 +1,16 @@
+version: '1'
+services:
+  postgres:
+    container_name: payments-postgres
+    image: postgres:13.8
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=payments-db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

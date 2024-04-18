@@ -1,0 +1,93 @@
+{
+  "info": {
+    "_postman_id": "b436a870-17b2-4b24-b1f2-b682f96fa099",
+    "name": "Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Submit Payment",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"orderId\": \"order123\",\n    \"orderPrice\": 100.00\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/payments",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payment Webhook",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"paymentId\": \"payment123\",\n    \"success\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/payments/webhook",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "payments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Order Payment Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/payments/{{paymentId}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "payments",
+            "{{paymentId}}"
+          ],
+          "variable": [
+            {
+              "id": "paymentId",
+              "key": "paymentId",
+              "value": "payment123"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "http://localhost:8003",
+      "type": "string"
+    }
+  ]
+}

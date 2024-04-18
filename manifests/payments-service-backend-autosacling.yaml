@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: payments-service-backend-autoscale
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Pod
+    name: payments-service-backend
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 80
