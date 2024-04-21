@@ -1,9 +1,9 @@
 package com.fiap.orders.infrastructure.adapter;
 
-import com.fiap.techchallenge.domain.entity.Customer;
-import com.fiap.techchallenge.domain.repository.CustomerRepository;
-import com.fiap.techchallenge.infrastructure.model.CustomerModel;
-import com.fiap.techchallenge.infrastructure.persistence.CustomerJpaRepository;
+import com.fiap.orders.domain.entity.Customer;
+import com.fiap.orders.domain.repository.CustomerRepository;
+import com.fiap.orders.infrastructure.model.CustomerModel;
+import com.fiap.orders.infrastructure.persistence.CustomerMongoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,19 +11,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerPersistenceAdapter implements CustomerRepository {
 
-    private final CustomerJpaRepository springDataRepository;
+    private final CustomerMongoRepository repository;
 
     @Override
     public Customer registerCustomer(Customer customer) {
         CustomerModel model = CustomerModel.toCustomerModel(customer);
-
-        springDataRepository.save(model);
-
+        repository.save(model);
         return CustomerModel.toCustomer(model);
     }
 
     @Override
     public boolean existsCustomer(String cpf) {
-        return springDataRepository.existsByCpf(cpf);
+        return repository.existsByCpf(cpf);
     }
 }

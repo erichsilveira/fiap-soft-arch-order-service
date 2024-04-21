@@ -1,8 +1,8 @@
 package com.fiap.orders.application.usecases;
 
-import com.fiap.techchallenge.domain.entity.Order;
-import com.fiap.techchallenge.interfaces.dto.UpdateOrderCommand;
-import com.fiap.techchallenge.exception.ResourceNotFoundException;
+import com.fiap.orders.domain.entity.Order;
+import com.fiap.orders.interfaces.dto.UpdateOrderCommand;
+import com.fiap.orders.exception.ResourceNotFoundException;
 
 public interface UpdateOrderUseCase {
 

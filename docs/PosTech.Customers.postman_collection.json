@@ -1,0 +1,102 @@
+{
+  "info": {
+    "_postman_id": "34fd1c56-7890-1234-56ab-78cd9e01f2gh",
+    "name": "Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"cpf\": \"12345678901\",\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/customers",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customer Exists",
+      "request": {
+        "method": "HEAD",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/customers?cpf={{customerCpf}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "customers"
+          ],
+          "query": [
+            {
+              "key": "cpf",
+              "value": "12345678901"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customer Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"cpf\": \"12345678901\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/customers/tokens",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "customers",
+            "tokens"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 package com.fiap.orders.domain.repository;
 
-import com.fiap.techchallenge.domain.entity.Order;
-import com.fiap.techchallenge.domain.entity.OrderStatus;
-import com.fiap.techchallenge.exception.ResourceNotFoundException;
+import com.fiap.orders.domain.entity.Order;
+import com.fiap.orders.domain.entity.OrderStatus;
+import com.fiap.orders.exception.ResourceNotFoundException;
 import java.util.List;
 
 public interface OrderRepository {

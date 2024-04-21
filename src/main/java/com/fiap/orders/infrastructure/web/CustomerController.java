@@ -1,14 +1,14 @@
 package com.fiap.orders.infrastructure.web;
 
-import com.fiap.techchallenge.application.usecases.ExistsCustomerUseCase;
-import com.fiap.techchallenge.application.usecases.RegisterCustomerUseCase;
-import com.fiap.techchallenge.domain.entity.Customer;
-import com.fiap.techchallenge.interfaces.dto.CustomerLoginRequest;
-import com.fiap.techchallenge.interfaces.dto.CustomerLoginResponse;
-import com.fiap.techchallenge.interfaces.dto.CustomerRegistrationRequest;
-import com.fiap.techchallenge.interfaces.mapper.CustomerRestMapper;
-import com.fiap.techchallenge.security.JwtUtil;
-import com.fiap.techchallenge.security.JwtUtil.JwtToken;
+import com.fiap.orders.application.usecases.ExistsCustomerUseCase;
+import com.fiap.orders.application.usecases.RegisterCustomerUseCase;
+import com.fiap.orders.domain.entity.Customer;
+import com.fiap.orders.interfaces.dto.CustomerLoginRequest;
+import com.fiap.orders.interfaces.dto.CustomerLoginResponse;
+import com.fiap.orders.interfaces.dto.CustomerRegistrationRequest;
+import com.fiap.orders.interfaces.mapper.CustomerRestMapper;
+import com.fiap.orders.security.JwtUtil;
+import com.fiap.orders.security.JwtUtil.JwtToken;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

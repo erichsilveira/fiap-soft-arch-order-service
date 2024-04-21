@@ -1,35 +1,27 @@
 package com.fiap.orders.domain.entity;
 
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
+
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
 @Builder
 public class Order {
 
-    @Getter
     private final String id;
 
-    @Getter
     private final List<String> productsId;
 
-    @Getter
-    private BigDecimal orderPrice;
+    private final BigDecimal orderPrice;
 
-    @Getter
-    private final OrderStatus status;
+    private OrderStatus status;
 
-    @Getter
-    private final String customerId;
-
-    @Getter
     private final String customerCpf;
 
-    @Getter
-    private ZonedDateTime createdAt;
+    private final LocalDateTime createdAt;
 
-    @Getter
-    private ZonedDateTime updatedAt;
+    private LocalDateTime updatedAt;
 }

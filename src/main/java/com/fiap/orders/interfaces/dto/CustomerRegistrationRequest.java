@@ -1,5 +1,7 @@
 package com.fiap.orders.interfaces.dto;
 
-public record CustomerRegistrationRequest(String cpf, String name, String email) {
+import jakarta.validation.constraints.NotBlank;
+
+public record CustomerRegistrationRequest(@NotBlank String cpf, @NotBlank String name, @NotBlank String email) {
 
 }

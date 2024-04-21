@@ -1,7 +1,7 @@
 package com.fiap.orders.domain.service;
 
-import com.fiap.techchallenge.application.usecases.ExistsCustomerUseCase;
-import com.fiap.techchallenge.domain.repository.CustomerRepository;
+import com.fiap.orders.application.usecases.ExistsCustomerUseCase;
+import com.fiap.orders.domain.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

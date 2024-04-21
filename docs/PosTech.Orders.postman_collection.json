@@ -1,0 +1,128 @@
+{
+  "info": {
+    "_postman_id": "a12345b6-78c9-012d-3e4f-5g67h8i9j0kl",
+    "name": "Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"productsId\": [\"prod123\", \"prod456\"],\n    \"customerCpf\": \"12345678901\",\n    \"orderPrice\": 150.50\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/orders",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Order",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"status\": \"REQUESTED\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/orders/{{orderId}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "orders",
+            "{{orderId}}"
+          ],
+          "variable": [
+            {
+              "id": "orderId",
+              "key": "orderId",
+              "value": "order123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Order by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/orders/{{orderId}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "orders",
+            "{{orderId}}"
+          ],
+          "variable": [
+            {
+              "id": "orderId",
+              "key": "orderId",
+              "value": "order123"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/orders?cpf={{customerCpf}}&status={{status}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "orders"
+          ],
+          "query": [
+            {
+              "key": "cpf",
+              "value": "12345678901"
+            },
+            {
+              "key": "status",
+              "value": "WAITING_PAYMENT"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}

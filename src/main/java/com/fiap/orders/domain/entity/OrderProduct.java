@@ -5,21 +5,17 @@ import lombok.Getter;
 
 import java.time.ZonedDateTime;
 
+@Getter
 @Builder
 public class OrderProduct {
 
-    @Getter
     private final String id;
 
-    @Getter
     private final String orderId;
 
-    @Getter
     private final String productId;
 
-    @Getter
     private ZonedDateTime createdAt;
 
-    @Getter
     private ZonedDateTime updatedAt;
 }

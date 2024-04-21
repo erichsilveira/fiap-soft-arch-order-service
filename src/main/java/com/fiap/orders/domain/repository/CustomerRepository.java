@@ -1,7 +1,7 @@
 package com.fiap.orders.domain.repository;
 
 
-import com.fiap.techchallenge.domain.entity.Customer;
+import com.fiap.orders.domain.entity.Customer;
 
 public interface CustomerRepository {
 

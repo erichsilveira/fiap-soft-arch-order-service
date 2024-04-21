@@ -1,7 +1,7 @@
 package com.fiap.orders.interfaces.mapper;
 
-import com.fiap.techchallenge.domain.entity.Customer;
-import com.fiap.techchallenge.interfaces.dto.CustomerRegistrationRequest;
+import com.fiap.orders.domain.entity.Customer;
+import com.fiap.orders.interfaces.dto.CustomerRegistrationRequest;
 import org.springframework.stereotype.Component;
 
 @Component
