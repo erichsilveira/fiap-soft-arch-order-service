@@ -16,7 +16,7 @@ import java.util.List;
 public class PaymentsClient {
 
     @Value("${payments.service.url}")
-    private String paymentsUrl;
+    String paymentsUrl;
 
     @Autowired
     private ObjectMapper objectMapper;

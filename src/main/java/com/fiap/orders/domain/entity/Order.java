@@ -1,5 +1,6 @@
 package com.fiap.orders.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class Order {
 
     private final String id;

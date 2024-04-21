@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ProductionClient {
 
     @Value("${production.service.url}")
-    private String productionUrl;
+    String productionUrl;
 
     @Autowired
     private ObjectMapper objectMapper;  // Spring-managed Jackson ObjectMapper
