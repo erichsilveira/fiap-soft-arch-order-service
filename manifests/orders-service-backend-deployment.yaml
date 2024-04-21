@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: payments-service-backend-deployment
-  name: payments-service-backend-deployment
+    app: orders-service-backend-deployment
+  name: orders-service-backend-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: payments-service-backend
+      app: orders-service-backend
   template:
     metadata:
       labels:
-        app: payments-service-backend
+        app: orders-service-backend
     spec:
       containers:
         - env:
-            - name: postgre.address
-              value: postgres
-          image: erich852/payments-service
-          name: payments-service-project
+            - name: mongo.address
+              value: mongo
+          image: erich852/orders-service
+          name: orders-service-project
           imagePullPolicy: Always
           ports:
-            - containerPort: 8003
+            - containerPort: 8001
               protocol: TCP
           resources:
             requests:

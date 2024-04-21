@@ -1,6 +1,6 @@
 # Tech Challenge Phase 4
 
-Pos Tech FIAP - Payments Project
+Pos Tech FIAP - Orders Project
 
 ## Team Members
 
@@ -17,7 +17,8 @@ Pos Tech FIAP - Payments Project
 
 ### Postman Collection
 
-- [Postech.Payments.postman_collection.json](docs/PosTech.Orders.postman_collection.json) inside `docs` directory
+- [Postech.Orders.postman_collection.json](docs/PosTech.Orders.postman_collection.json) inside `docs` directory
+- [Postech.Customers.postman_collection.json](docs/PosTech.Orders.postman_collection.json) inside `docs` directory
 
 ### Swagger (openAPI)
 
