@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo-deployment
+  name: mongo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - env:
+            - name: MONGO_DB
+              value: orders-db
+            - name: MONGO_PASSWORD
+              value: test
+            - name: MONGO_USER
+              value: test
+            - name: MGDATA
+              value: /var/lib/mongo/data/db/
+          image: mongo:latest
+          name: mongo-db
+          ports:
+            - containerPort: 27017
+              hostPort: 27017
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/mongo/data
+              name: mongo-data
+      restartPolicy: Always
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-data
