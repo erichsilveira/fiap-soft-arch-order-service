@@ -11,7 +11,7 @@
     <groupId>com.fiap</groupId>
     <artifactId>orders</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Payments Service</name>
+    <name>Orders Service</name>
     <description>Tech Challenge - Orders Service</description>
     <properties>
         <java.version>17</java.version>

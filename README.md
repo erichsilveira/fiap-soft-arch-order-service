@@ -11,6 +11,11 @@ Pos Tech FIAP - Orders Project
 
 ## Documentation
 
+### Test Coverage Report
+
+![image](./docs/testReport.png)
+
+
 ### DDD
 
 - https://miro.com/app/board/uXjVNf1J6J8=
@@ -18,7 +23,7 @@ Pos Tech FIAP - Orders Project
 ### Postman Collection
 
 - [Postech.Orders.postman_collection.json](docs/PosTech.Orders.postman_collection.json) inside `docs` directory
-- [Postech.Customers.postman_collection.json](docs/PosTech.Orders.postman_collection.json) inside `docs` directory
+- [Postech.Customers.postman_collection.json](docs/PosTech.Customers.postman_collection.json) inside `docs` directory
 
 ### Swagger (openAPI)
 
