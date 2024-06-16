@@ -10,6 +10,7 @@ import com.fiap.orders.exception.ResourceNotFoundException;
 import com.fiap.orders.interfaces.dto.*;
 import com.fiap.orders.interfaces.mapper.OrderRestMapper;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class OrderController {
 
     @GetMapping
     ResponseEntity<List<Order>> search(
-            @RequestParam(required = false) String cpf,
+            @RequestParam(required = false) @Size(min = 1, max = 11) String cpf,
             @RequestParam(required = false) OrderStatus status) {
         var domainEntities = searchUseCase.searchOrders(
                 new SearchOrderCommand(cpf, status));
