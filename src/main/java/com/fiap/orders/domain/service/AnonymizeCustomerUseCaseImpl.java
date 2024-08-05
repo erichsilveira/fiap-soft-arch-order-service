@@ -26,7 +26,8 @@ public class AnonymizeCustomerUseCaseImpl implements AnonymizeCustomerUseCase {
         customer.setName(shuffleString(customer.getName()));
         customer.setEmail(shuffleString(customer.getEmail()));
 
-        log.debug("Anonymizing customer with CPF: {} - {}", cpf, customer);
+        log.info("Anonymizing customer with CPF: {}", cpf);
+        log.info("New customer: {}", customer);
         repository.registerCustomer(customer);
     }
 
