@@ -29,7 +29,7 @@ public class CheckProductsUseCaseImpl implements CheckProductsUseCase {
                 log.info("Product {} found", product.id());
             } else {
                 log.info("Product {} not found", productId);
-                throw new ResourceNotFoundException();
+                throw new ResourceNotFoundException("Product not found");
             }
 
         });

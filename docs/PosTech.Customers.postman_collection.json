@@ -90,12 +90,36 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Anonymize Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{host}}/customers/anonymize/{{customerCpf}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "customers",
+            "anonymize",
+            "12345678901"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "variable": [
     {
       "key": "host",
-      "value": "http://localhost:8081",
+      "value": "http://localhost:8001",
       "type": "string"
     }
   ]

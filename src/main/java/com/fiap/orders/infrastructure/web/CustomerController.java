@@ -1,5 +1,6 @@
 package com.fiap.orders.infrastructure.web;
 
+import com.fiap.orders.application.usecases.AnonymizeCustomerUseCase;
 import com.fiap.orders.application.usecases.ExistsCustomerUseCase;
 import com.fiap.orders.application.usecases.RegisterCustomerUseCase;
 import com.fiap.orders.domain.entity.Customer;
@@ -13,12 +14,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customers")
@@ -29,15 +25,17 @@ public class CustomerController {
 
     private final ExistsCustomerUseCase existsCustomerUseCase;
 
+    private final AnonymizeCustomerUseCase anonymizeCustomerUseCase;
+
     private final CustomerRestMapper restMapper;
 
     private final JwtUtil jwtUtil;
 
     @PostMapping
     ResponseEntity<Customer> register(
-        @RequestBody @Valid CustomerRegistrationRequest registrationRequest) {
+            @RequestBody @Valid CustomerRegistrationRequest registrationRequest) {
         var domainEntity = registerUseCase.registerCustomer(
-            restMapper.toDomainEntity(registrationRequest));
+                restMapper.toDomainEntity(registrationRequest));
 
         return new ResponseEntity<>(domainEntity, HttpStatus.CREATED);
     }
@@ -50,7 +48,7 @@ public class CustomerController {
 
     @PostMapping(value = "/tokens")
     ResponseEntity<CustomerLoginResponse> login(
-        @RequestBody @Valid CustomerLoginRequest loginRequest) {
+            @RequestBody @Valid CustomerLoginRequest loginRequest) {
 
         String cpf = loginRequest.cpf();
         if (!existsCustomerUseCase.existsCustomer(cpf)) {
@@ -59,9 +57,15 @@ public class CustomerController {
 
         JwtToken jwtToken = jwtUtil.createToken(cpf);
         CustomerLoginResponse loginResponse =
-            new CustomerLoginResponse(jwtToken.token(), jwtToken.exp(), jwtToken.sub());
+                new CustomerLoginResponse(jwtToken.token(), jwtToken.exp(), jwtToken.sub());
 
         return new ResponseEntity<>(loginResponse, HttpStatus.OK);
+    }
+
+    @PostMapping("/anonymize/{cpf}")
+    public ResponseEntity<Void> anonymizeCustomer(@PathVariable String cpf) {
+        anonymizeCustomerUseCase.anonymizeCustomer(cpf);
+        return ResponseEntity.noContent().build();
     }
 
 }

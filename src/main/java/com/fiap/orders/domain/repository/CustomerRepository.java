@@ -8,4 +8,6 @@ public interface CustomerRepository {
     boolean existsCustomer(String cpf);
 
     Customer registerCustomer(Customer customer);
+
+    Customer findById(String cpf);
 }

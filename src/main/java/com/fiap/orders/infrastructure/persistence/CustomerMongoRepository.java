@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomerMongoRepository extends MongoRepository<CustomerModel, String> {
 
     boolean existsByCpf(String cpf);
+
+    CustomerModel findByCpf(String cpf);
 }
