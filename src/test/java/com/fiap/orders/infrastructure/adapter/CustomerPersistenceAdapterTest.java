@@ -1,6 +1,7 @@
 package com.fiap.orders.infrastructure.adapter;
 
 import com.fiap.orders.domain.entity.Customer;
+import com.fiap.orders.exception.ResourceNotFoundException;
 import com.fiap.orders.infrastructure.model.CustomerModel;
 import com.fiap.orders.infrastructure.persistence.CustomerMongoRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -79,5 +80,26 @@ class CustomerPersistenceAdapterTest {
 
         assertFalse(exists);
         verify(customerMongoRepository).existsByCpf(cpf);
+    }
+
+    @Test
+    void shouldFindCustomerById() {
+        String cpf = "12345678901";
+        when(customerMongoRepository.findByCpf(cpf)).thenReturn(customerModel);
+
+        Customer foundCustomer = customerPersistenceAdapter.findById(cpf);
+
+        assertNotNull(foundCustomer);
+        assertEquals(customer.getCpf(), foundCustomer.getCpf());
+        verify(customerMongoRepository).findByCpf(cpf);
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCustomerNotFound() {
+        String cpf = "98765432109";
+        when(customerMongoRepository.findByCpf(cpf)).thenReturn(null);
+
+        assertThrows(ResourceNotFoundException.class, () -> customerPersistenceAdapter.findById(cpf));
+        verify(customerMongoRepository).findByCpf(cpf);
     }
 }

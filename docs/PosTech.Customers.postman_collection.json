@@ -90,6 +90,30 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Anonymize Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{host}}/customers/anonymize/{{customerCpf}}",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "customers",
+            "anonymize",
+            "{{customerCpf}}"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "variable": [

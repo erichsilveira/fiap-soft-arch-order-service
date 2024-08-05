@@ -1,8 +1,10 @@
 package com.fiap.orders.domain.entity;
 
-import java.time.ZonedDateTime;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+
+import java.time.ZonedDateTime;
 
 @Getter
 @Builder
@@ -10,11 +12,14 @@ public class Customer {
 
     private final String id;
 
-    private final String cpf;
+    @Setter
+    private String cpf;
 
-    private final String name;
+    @Setter
+    private String name;
 
-    private final String email;
+    @Setter
+    private String email;
 
     private ZonedDateTime createdAt;
 

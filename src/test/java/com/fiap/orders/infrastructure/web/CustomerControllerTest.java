@@ -1,5 +1,6 @@
 package com.fiap.orders.infrastructure.web;
 
+import com.fiap.orders.application.usecases.AnonymizeCustomerUseCase;
 import com.fiap.orders.application.usecases.ExistsCustomerUseCase;
 import com.fiap.orders.application.usecases.RegisterCustomerUseCase;
 import com.fiap.orders.domain.entity.Customer;
@@ -49,6 +50,9 @@ class CustomerControllerTest {
 
     @MockBean
     private ExistsCustomerUseCase existsCustomerUseCase;
+
+    @MockBean
+    private AnonymizeCustomerUseCase anonymizeCustomerUseCase;
 
     @MockBean
     private JwtUtil jwtUtil;
@@ -122,5 +126,17 @@ class CustomerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"cpf\":\"12345678900\"}"))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void anonymizeCustomer() throws Exception {
+        mockMvc.perform(post("/customers/anonymize/12345678900"))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void anonymizeCustomerFailure() throws Exception {
+        mockMvc.perform(post("/customers/anonymize/12345678900"))
+                .andExpect(status().isNoContent());
     }
 }

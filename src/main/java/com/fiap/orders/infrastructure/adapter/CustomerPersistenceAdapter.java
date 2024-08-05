@@ -2,6 +2,7 @@ package com.fiap.orders.infrastructure.adapter;
 
 import com.fiap.orders.domain.entity.Customer;
 import com.fiap.orders.domain.repository.CustomerRepository;
+import com.fiap.orders.exception.ResourceNotFoundException;
 import com.fiap.orders.infrastructure.model.CustomerModel;
 import com.fiap.orders.infrastructure.persistence.CustomerMongoRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,14 @@ public class CustomerPersistenceAdapter implements CustomerRepository {
     @Override
     public boolean existsCustomer(String cpf) {
         return repository.existsByCpf(cpf);
+    }
+
+    @Override
+    public Customer findById(String cpf) {
+        try {
+            return CustomerModel.toCustomer(repository.findByCpf(cpf));
+        } catch (Exception e) {
+            throw new ResourceNotFoundException();
+        }
     }
 }
